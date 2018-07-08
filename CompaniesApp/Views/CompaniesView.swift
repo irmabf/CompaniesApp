@@ -17,18 +17,7 @@ extension CompaniesController {
     tableView.backgroundColor =  .darkBlue
     tableView.separatorColor = .white
   }
-   func setupNavigationStyle() {
-    
-    navigationController?.navigationBar.isTranslucent = false
-    navigationController?.navigationBar.barTintColor = .lightRed
-    navigationController?.navigationBar.prefersLargeTitles = true
-    
-    navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
-    
-    navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
-    
-  }
-  
+
   func setupNavigationItems() {
     navigationItem.title = "Companies"
     

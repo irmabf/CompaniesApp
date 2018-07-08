@@ -72,8 +72,8 @@
 			children = (
 				B75FCE2B20F27728008BE761 /* Views */,
 				B75FCE2420F26B72008BE761 /* Models */,
-				B75FCE1320F25304008BE761 /* Utils */,
 				B75FCE1A20F25B77008BE761 /* ViewControllers */,
+				B75FCE1320F25304008BE761 /* Utils */,
 				B75FCDFF20F25131008BE761 /* AppDelegate.swift */,
 				B75FCE0320F25131008BE761 /* Main.storyboard */,
 				B75FCE0620F25133008BE761 /* Assets.xcassets */,
