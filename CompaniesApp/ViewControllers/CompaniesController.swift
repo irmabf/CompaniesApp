@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreData
 
 class CompaniesController: UITableViewController, CreateCompanyControllerDelegate {
 //  We must implement the didAddCompany method because to conform to the CreateCompanyControllerDelegate
@@ -19,12 +20,12 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
     tableView.insertRows(at: [newIndexPath], with: .fade)
   }
   
-  
-  var companies = [
-    Company(name: "Apple", founded: Date()),
-    Company(name: "Google", founded: Date()),
-    Company(name: "Facebook", founded: Date())
-  ]
+  var companies = [Company]()
+//  var companies = [
+//    Company(name: "Apple", founded: Date()),
+//    Company(name: "Google", founded: Date()),
+//    Company(name: "Facebook", founded: Date())
+//  ]
   
 //  func addCompany(company: Company) {
 ////    let tesla = Company(name: "Tesla", founded: Date())
@@ -36,9 +37,34 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
 //  }
   
   let cellId = "cellId"
+  
+  private func fetchCompanies(){
+    let persistentContainer = NSPersistentContainer(name: "CompaniesAppModels")
+    persistentContainer.loadPersistentStores { (storeDescription, err) in
+      if let err = err {
+        fatalError("Loading of store failed: \(err)")
+      }
+    }
+    
+    let context = persistentContainer.viewContext
+    
+    let fetchRequest = NSFetchRequest<Company>(entityName: "Company")
+    
+    do{
+      let companies = try context.fetch(fetchRequest)
+      companies.forEach { (company) in
+        print(company.name ?? "")
+      }
+    }catch let fetchErr{
+      print("Failed to fetch err:", fetchErr)
+    }
+    
+  }
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    fetchCompanies()
     
 //    navigationItem.leftBarButtonItem = UIBarButtonItem(title: "TEST ADD", style: .plain, target: self, action: #selector(addCompany))
     

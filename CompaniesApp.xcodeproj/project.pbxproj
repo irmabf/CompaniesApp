@@ -19,6 +19,7 @@
 		B75FCE2320F26602008BE761 /* UIColor+rgb.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75FCE2220F26602008BE761 /* UIColor+rgb.swift */; };
 		B75FCE2620F26B85008BE761 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75FCE2520F26B85008BE761 /* Company.swift */; };
 		B75FCE2820F276B0008BE761 /* CreateCompanyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75FCE2720F276B0008BE761 /* CreateCompanyController.swift */; };
+		B75FCE3020F2A8CA008BE761 /* CompaniesAppModels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B75FCE2E20F2A8CA008BE761 /* CompaniesAppModels.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		B75FCE2220F26602008BE761 /* UIColor+rgb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+rgb.swift"; sourceTree = "<group>"; };
 		B75FCE2520F26B85008BE761 /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
 		B75FCE2720F276B0008BE761 /* CreateCompanyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCompanyController.swift; sourceTree = "<group>"; };
+		B75FCE2F20F2A8CA008BE761 /* CompaniesAppModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CompaniesAppModel.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 				B75FCE1120F25141008BE761 /* select_photo_empty@2x.png */,
 				B75FCE0820F25133008BE761 /* LaunchScreen.storyboard */,
 				B75FCE0B20F25133008BE761 /* Info.plist */,
+				B75FCE2E20F2A8CA008BE761 /* CompaniesAppModels.xcdatamodeld */,
 			);
 			path = CompaniesApp;
 			sourceTree = "<group>";
@@ -186,6 +189,7 @@
 				B75FCE1520F25319008BE761 /* UIView+constraints.swift in Sources */,
 				B75FCE2320F26602008BE761 /* UIColor+rgb.swift in Sources */,
 				B75FCE2620F26B85008BE761 /* Company.swift in Sources */,
+				B75FCE3020F2A8CA008BE761 /* CompaniesAppModels.xcdatamodeld in Sources */,
 				B75FCE1F20F263D8008BE761 /* UIColor+theme.swift in Sources */,
 				B75FCE0020F25131008BE761 /* AppDelegate.swift in Sources */,
 				B75FCE2820F276B0008BE761 /* CreateCompanyController.swift in Sources */,
@@ -384,6 +388,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		B75FCE2E20F2A8CA008BE761 /* CompaniesAppModels.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				B75FCE2F20F2A8CA008BE761 /* CompaniesAppModel.xcdatamodel */,
+			);
+			currentVersion = B75FCE2F20F2A8CA008BE761 /* CompaniesAppModel.xcdatamodel */;
+			path = CompaniesAppModels.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = B75FCDF420F25131008BE761 /* Project object */;
 }
