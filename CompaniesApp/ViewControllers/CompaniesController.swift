@@ -8,18 +8,39 @@
 
 import UIKit
 
-class CompaniesController: UITableViewController {
+class CompaniesController: UITableViewController, CreateCompanyControllerDelegate {
+//  We must implement the didAddCompany method because to conform to the CreateCompanyControllerDelegate
+  func didAddCompany(company: Company) {
+    //    let tesla = Company(name: "Tesla", founded: Date())
+    //    1. Modify array
+    companies.append(company)
+    //    2. Insert a new indexPath into tableView
+    let newIndexPath = IndexPath(row: companies.count - 1, section: 0)
+    tableView.insertRows(at: [newIndexPath], with: .fade)
+  }
   
-  let companies = [
+  
+  var companies = [
     Company(name: "Apple", founded: Date()),
     Company(name: "Google", founded: Date()),
     Company(name: "Facebook", founded: Date())
   ]
   
+//  func addCompany(company: Company) {
+////    let tesla = Company(name: "Tesla", founded: Date())
+////    1. Modify array
+//    companies.append(company)
+////    2. Insert a new indexPath into tableView
+//    let newIndexPath = IndexPath(row: companies.count - 1, section: 0)
+//    tableView.insertRows(at: [newIndexPath], with: .fade)
+//  }
+  
   let cellId = "cellId"
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+//    navigationItem.leftBarButtonItem = UIBarButtonItem(title: "TEST ADD", style: .plain, target: self, action: #selector(addCompany))
     
     view.backgroundColor = .white
     
@@ -35,11 +56,14 @@ class CompaniesController: UITableViewController {
   @objc func handleAddCompany() {
     let createCompanyController = CreateCompanyController()
     let navController = CustomNavigationController(rootViewController: createCompanyController)
+    
+    createCompanyController.delegate = self
+    
     present(navController, animated: true, completion: nil)
   }
   
   //  Custom functions for styles
-  func setupTableViewStyle() {
+  fileprivate func setupTableViewStyle() {
     //    tableView.separatorStyle = .none
     //    This code removes the separator from the part of the tableView without cells
     tableView.tableFooterView = UIView() // blank UIView
@@ -47,7 +71,7 @@ class CompaniesController: UITableViewController {
     tableView.separatorColor = .white
   }
   
-  func setupNavigationItems() {
+  fileprivate func setupNavigationItems() {
     navigationItem.title = "Companies"
     
     navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "plus").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleAddCompany))
