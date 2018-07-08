@@ -38,6 +38,21 @@ class CompaniesController: UITableViewController {
     present(navController, animated: true, completion: nil)
   }
   
+  //  Custom functions for styles
+  func setupTableViewStyle() {
+    //    tableView.separatorStyle = .none
+    //    This code removes the separator from the part of the tableView without cells
+    tableView.tableFooterView = UIView() // blank UIView
+    tableView.backgroundColor =  .darkBlue
+    tableView.separatorColor = .white
+  }
+  
+  func setupNavigationItems() {
+    navigationItem.title = "Companies"
+    
+    navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "plus").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleAddCompany))
+  }
+  
 //  Overrides
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

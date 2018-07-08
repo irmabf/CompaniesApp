@@ -19,7 +19,6 @@
 		B75FCE2320F26602008BE761 /* UIColor+rgb.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75FCE2220F26602008BE761 /* UIColor+rgb.swift */; };
 		B75FCE2620F26B85008BE761 /* Company.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75FCE2520F26B85008BE761 /* Company.swift */; };
 		B75FCE2820F276B0008BE761 /* CreateCompanyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75FCE2720F276B0008BE761 /* CreateCompanyController.swift */; };
-		B75FCE2A20F276ED008BE761 /* CompaniesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75FCE2920F276ED008BE761 /* CompaniesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,7 +36,6 @@
 		B75FCE2220F26602008BE761 /* UIColor+rgb.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+rgb.swift"; sourceTree = "<group>"; };
 		B75FCE2520F26B85008BE761 /* Company.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Company.swift; sourceTree = "<group>"; };
 		B75FCE2720F276B0008BE761 /* CreateCompanyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCompanyController.swift; sourceTree = "<group>"; };
-		B75FCE2920F276ED008BE761 /* CompaniesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompaniesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,7 +68,6 @@
 		B75FCDFE20F25131008BE761 /* CompaniesApp */ = {
 			isa = PBXGroup;
 			children = (
-				B75FCE2B20F27728008BE761 /* Views */,
 				B75FCE2420F26B72008BE761 /* Models */,
 				B75FCE1A20F25B77008BE761 /* ViewControllers */,
 				B75FCE1320F25304008BE761 /* Utils */,
@@ -110,14 +107,6 @@
 				B75FCE2520F26B85008BE761 /* Company.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		B75FCE2B20F27728008BE761 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				B75FCE2920F276ED008BE761 /* CompaniesView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,7 +188,6 @@
 				B75FCE2620F26B85008BE761 /* Company.swift in Sources */,
 				B75FCE1F20F263D8008BE761 /* UIColor+theme.swift in Sources */,
 				B75FCE0020F25131008BE761 /* AppDelegate.swift in Sources */,
-				B75FCE2A20F276ED008BE761 /* CompaniesView.swift in Sources */,
 				B75FCE2820F276B0008BE761 /* CreateCompanyController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

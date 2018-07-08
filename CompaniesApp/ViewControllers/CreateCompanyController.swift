@@ -9,12 +9,26 @@
 import UIKit
 
 class CreateCompanyController: UIViewController {
+  
+  let namelabel: UILabel = {
+    let label = UILabel()
+    label.text = "Name"
+    label.backgroundColor = .red
+    return label
+  }()
+  
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+   
+    
     navigationItem.title = "Create Company"
     navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
     view.backgroundColor = .darkBlue
   }
+  
+
+
   
   @objc fileprivate func handleCancel() {
     dismiss(animated: true, completion: nil)
