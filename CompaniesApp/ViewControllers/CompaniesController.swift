@@ -10,6 +10,12 @@ import UIKit
 
 class CompaniesController: UITableViewController {
   
+  let companies = [
+    Company(name: "Apple", founded: Date()),
+    Company(name: "Google", founded: Date()),
+    Company(name: "Facebook", founded: Date())
+  ]
+  
   let cellId = "cellId"
 
   override func viewDidLoad() {
@@ -17,57 +23,51 @@ class CompaniesController: UITableViewController {
     
     view.backgroundColor = .white
     
-    navigationItem.title = "Companies"
-    
-    navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "plus").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleAddCompany))
-    
     tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
+    
+    setupNavigationItems()
     
     setupNavigationStyle()
     
     setupTableViewStyle()
   }
   
+  //  Custom functions
+  
+  @objc func handleAddCompany() {
+    let createCompanyController = CreateCompanyController()
+    let navController = UINavigationController(rootViewController: createCompanyController)
+    present(navController, animated: true, completion: nil)
+  }
+  
 //  Overrides
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
     let cell = tableView.dequeueReusableCell(withIdentifier: "cellId", for: indexPath)
+    let company = companies[indexPath.row]
+    
     cell.backgroundColor = .tealColor
+    cell.textLabel?.textColor = .white
+    cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
+    cell.textLabel?.text = company.name
     return cell
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 8
+    return companies.count
   }
   
-//  Custom functions
-  @objc fileprivate func handleAddCompany() {
-    print("Company added")
+  override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    let view = UIView()
+    view.backgroundColor = .lightBlue
+    return view
   }
   
-  //  Custom functions for styles
-  fileprivate func setupTableViewStyle() {
-   
-    
-//    tableView.separatorStyle = .none
-//    This code removes the separator from the part of the tableView without cells
-    
-    tableView.tableFooterView = UIView() // blank UIView
-    
-    tableView.backgroundColor =  .darkBlue
+  override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    return 50
   }
-
-  fileprivate func setupNavigationStyle() {
-    
-    navigationController?.navigationBar.isTranslucent = false
-    navigationController?.navigationBar.barTintColor = .lightRed
-    navigationController?.navigationBar.prefersLargeTitles = true
-    
-    navigationController?.navigationBar.titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
-    
-    navigationController?.navigationBar.largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
-    
-  }
+  
 }
 
 
