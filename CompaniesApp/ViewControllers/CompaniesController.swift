@@ -21,40 +21,25 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
   }
   
   var companies = [Company]()
-//  var companies = [
-//    Company(name: "Apple", founded: Date()),
-//    Company(name: "Google", founded: Date()),
-//    Company(name: "Facebook", founded: Date())
-//  ]
-  
-//  func addCompany(company: Company) {
-////    let tesla = Company(name: "Tesla", founded: Date())
-////    1. Modify array
-//    companies.append(company)
-////    2. Insert a new indexPath into tableView
-//    let newIndexPath = IndexPath(row: companies.count - 1, section: 0)
-//    tableView.insertRows(at: [newIndexPath], with: .fade)
-//  }
   
   let cellId = "cellId"
   
   private func fetchCompanies(){
-    let persistentContainer = NSPersistentContainer(name: "CompaniesAppModels")
-    persistentContainer.loadPersistentStores { (storeDescription, err) in
-      if let err = err {
-        fatalError("Loading of store failed: \(err)")
-      }
-    }
     
-    let context = persistentContainer.viewContext
+    let context = CoreDataManager.shared.persistentContainer.viewContext
     
     let fetchRequest = NSFetchRequest<Company>(entityName: "Company")
     
     do{
       let companies = try context.fetch(fetchRequest)
-      companies.forEach { (company) in
-        print(company.name ?? "")
-      }
+      
+      companies.forEach ({ (company) in
+//        print(company.name ?? "")
+        self.companies = companies
+        tableView.reloadData()
+      })
+     
+      
     }catch let fetchErr{
       print("Failed to fetch err:", fetchErr)
     }
