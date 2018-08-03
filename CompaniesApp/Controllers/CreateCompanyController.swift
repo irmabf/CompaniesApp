@@ -68,8 +68,8 @@ class CreateCompanyController: UIViewController, UIImagePickerControllerDelegate
     
     setupUI()
 
-    navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(handleCancel))
-    
+    setupCancelButton()
+
     navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(handleSave))
     nameTextField.becomeFirstResponder()
     
@@ -183,9 +183,4 @@ class CreateCompanyController: UIViewController, UIImagePickerControllerDelegate
       print("Failed to save company", saveErr)
     }
   }
-  
-  @objc private func handleCancel() {
-    dismiss(animated: true, completion: nil)
-  }
-
 }

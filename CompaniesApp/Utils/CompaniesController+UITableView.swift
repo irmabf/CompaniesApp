@@ -9,6 +9,18 @@
 import UIKit
 
 extension CompaniesController {
+  
+  //Push a new view controller when selecting row
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    
+    /*
+     *Whenever I am trying to push a new controller I will send over the company that i am selecting**/
+    let company = self.companies[indexPath.row]
+    
+    let employeesController = EmployeesController()
+    employeesController.company = company
+    navigationController?.pushViewController(employeesController, animated: true)
+  }
   override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
     
     let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (_, indexPath) in
