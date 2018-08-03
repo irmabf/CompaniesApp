@@ -37,6 +37,8 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
     super.viewDidLoad()
     
     fetchCompanies()
+    
+    navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Reset", style: .plain, target: self, action: #selector(handleReset))
     view.backgroundColor = .white
     tableView.register(UITableViewCell.self, forCellReuseIdentifier: cellId)
     setupNavigationItems()
@@ -100,6 +102,19 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
     return cell
   }
   
+  override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+    let label = UILabel()
+    label.text = "No companies available"
+    label.textColor = .white
+    label.textAlignment = .center
+    label.font = UIFont.boldSystemFont(ofSize: 16)
+    return label
+  }
+  
+  override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    //if companies.count = 0 return height of 150, else return height of 0
+    return companies.count == 0  ? 150 : 0
+  }
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     return companies.count
   }
@@ -141,6 +156,27 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
       })
     }catch let fetchErr{
       print("Failed to fetch err:", fetchErr)
+    }
+  }
+  
+  @objc func handleReset() {
+    let context = CoreDataManager.shared.persistentContainer.viewContext
+    let batchDeleteRequest = NSBatchDeleteRequest(fetchRequest: Company.fetchRequest())
+    do {
+      try context.execute(batchDeleteRequest)
+      
+      //upon deletion from core data succeeded
+      
+      var indexPathsToRemove = [IndexPath]()
+      for (index, _) in companies.enumerated() {
+        let indexPath = IndexPath(row: index, section: 0)
+        indexPathsToRemove.append(indexPath)
+      }
+      companies.removeAll()
+      tableView.deleteRows(at: indexPathsToRemove, with: .left)
+      
+    } catch let deleteErr {
+      print("Failed to delete objects from core data:", deleteErr)
     }
   }
   @objc func handleAddCompany() {
