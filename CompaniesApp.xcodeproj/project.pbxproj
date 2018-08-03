@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B736E94B2114BF9E00F3D7CC /* UINavigationController+style.swift in Sources */ = {isa = PBXBuildFile; fileRef = B736E94A2114BF9E00F3D7CC /* UINavigationController+style.swift */; };
+		B736E94E2114E28100F3D7CC /* CompanyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B736E94D2114E28100F3D7CC /* CompanyCell.swift */; };
 		B75FCE0020F25131008BE761 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75FCDFF20F25131008BE761 /* AppDelegate.swift */; };
 		B75FCE0220F25131008BE761 /* CompaniesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75FCE0120F25131008BE761 /* CompaniesController.swift */; };
 		B75FCE0520F25131008BE761 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B75FCE0320F25131008BE761 /* Main.storyboard */; };
@@ -25,6 +26,7 @@
 
 /* Begin PBXFileReference section */
 		B736E94A2114BF9E00F3D7CC /* UINavigationController+style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+style.swift"; sourceTree = "<group>"; };
+		B736E94D2114E28100F3D7CC /* CompanyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanyCell.swift; sourceTree = "<group>"; };
 		B75FCDFC20F25131008BE761 /* CompaniesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CompaniesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B75FCDFF20F25131008BE761 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B75FCE0120F25131008BE761 /* CompaniesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompaniesController.swift; sourceTree = "<group>"; };
@@ -53,6 +55,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B736E94F2114E28700F3D7CC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B736E94D2114E28100F3D7CC /* CompanyCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		B75FCDF320F25131008BE761 = {
 			isa = PBXGroup;
 			children = (
@@ -74,6 +84,7 @@
 			children = (
 				B7B0FAAE20F3A4DF00EFFEA3 /* Models */,
 				B75FCE1A20F25B77008BE761 /* Controllers */,
+				B736E94F2114E28700F3D7CC /* Views */,
 				B75FCE1320F25304008BE761 /* Utils */,
 				B75FCDFF20F25131008BE761 /* AppDelegate.swift */,
 				B75FCE0320F25131008BE761 /* Main.storyboard */,
@@ -195,6 +206,7 @@
 				B75FCE3020F2A8CA008BE761 /* CompaniesAppModels.xcdatamodeld in Sources */,
 				B75FCE1F20F263D8008BE761 /* UIColor+theme.swift in Sources */,
 				B75FCE3220F2B420008BE761 /* CoreDataManager.swift in Sources */,
+				B736E94E2114E28100F3D7CC /* CompanyCell.swift in Sources */,
 				B75FCE0020F25131008BE761 /* AppDelegate.swift in Sources */,
 				B75FCE2820F276B0008BE761 /* CreateCompanyController.swift in Sources */,
 			);
