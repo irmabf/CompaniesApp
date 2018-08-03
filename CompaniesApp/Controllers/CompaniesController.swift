@@ -92,6 +92,11 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
       cell.textLabel?.text = company.name
     }
     //cell.textLabel?.text = "\(company.name) - Founded: \(company.founded)"
+    cell.imageView?.image = #imageLiteral(resourceName: "select_photo_empty.png")
+    if let imageData = company.imageData {
+      cell.imageView?.image = UIImage(data: imageData)
+    }
+
     return cell
   }
   

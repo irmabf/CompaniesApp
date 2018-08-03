@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B736E94B2114BF9E00F3D7CC /* UINavigationController+style.swift in Sources */ = {isa = PBXBuildFile; fileRef = B736E94A2114BF9E00F3D7CC /* UINavigationController+style.swift */; };
 		B75FCE0020F25131008BE761 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75FCDFF20F25131008BE761 /* AppDelegate.swift */; };
 		B75FCE0220F25131008BE761 /* CompaniesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75FCE0120F25131008BE761 /* CompaniesController.swift */; };
 		B75FCE0520F25131008BE761 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B75FCE0320F25131008BE761 /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		B736E94A2114BF9E00F3D7CC /* UINavigationController+style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+style.swift"; sourceTree = "<group>"; };
 		B75FCDFC20F25131008BE761 /* CompaniesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CompaniesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B75FCDFF20F25131008BE761 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B75FCE0120F25131008BE761 /* CompaniesController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompaniesController.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				B75FCE1420F25319008BE761 /* UIView+constraints.swift */,
 				B75FCE1E20F263D8008BE761 /* UIColor+theme.swift */,
 				B75FCE2220F26602008BE761 /* UIColor+rgb.swift */,
+				B736E94A2114BF9E00F3D7CC /* UINavigationController+style.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 				B75FCE1720F25A68008BE761 /* CustomNavigationController.swift in Sources */,
 				B75FCE0220F25131008BE761 /* CompaniesController.swift in Sources */,
 				B75FCE1520F25319008BE761 /* UIView+constraints.swift in Sources */,
+				B736E94B2114BF9E00F3D7CC /* UINavigationController+style.swift in Sources */,
 				B75FCE2320F26602008BE761 /* UIColor+rgb.swift in Sources */,
 				B75FCE3020F2A8CA008BE761 /* CompaniesAppModels.xcdatamodeld in Sources */,
 				B75FCE1F20F263D8008BE761 /* UIColor+theme.swift in Sources */,
