@@ -20,29 +20,19 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
     tableView.insertRows(at: [newIndexPath], with: .fade)
   }
   
+  func didEditCompany(company: Company) {
+    //Get the index of the company in the companies array
+    let row = companies.index(of: company)
+    let reloadIndexPath = IndexPath(row: row!, section: 0)
+    //update my tableview
+    tableView.reloadRows(at: [reloadIndexPath], with: .middle)
+  }
+  
   var companies = [Company]()
   
   let cellId = "cellId"
   
-  private func fetchCompanies(){
-    
-    let context = CoreDataManager.shared.persistentContainer.viewContext
-    
-    let fetchRequest = NSFetchRequest<Company>(entityName: "Company")
-    
-    do{
-      let companies = try context.fetch(fetchRequest)
-      
-      companies.forEach ({ (company) in
-//        print(company.name ?? "")
-        self.companies = companies
-        tableView.reloadData()
-      })
-    }catch let fetchErr{
-      print("Failed to fetch err:", fetchErr)
-    }
-  }
-  //  Overrides
+  //  Lifecycle methods
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -52,7 +42,7 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
     setupNavigationItems()
     setupTableViewStyle()
   }
-  
+  //Overrides
   override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
     
     let deleteAction = UITableViewRowAction(style: .destructive, title: "Delete") { (_, indexPath) in
@@ -76,12 +66,11 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
       }catch let saveErr{
         print("Failed to save deletion with error:", saveErr)
       }
-      
     }
-    let editAction = UITableViewRowAction(style: .normal, title: "Edit") { (_, indexPath) in
-      let company = self.companies[indexPath.row]
-      print("Attempting to edit company:", company.name ?? "")
-    }
+    deleteAction.backgroundColor = .lightRed
+    
+    let editAction = UITableViewRowAction(style: .normal, title: "Edit", handler: editHandlerFunction)
+    editAction.backgroundColor = .darkBlue
      return [deleteAction, editAction]
   }
   
@@ -93,7 +82,16 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
     cell.backgroundColor = .tealColor
     cell.textLabel?.textColor = .white
     cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16)
-    cell.textLabel?.text = company.name
+    if let name = company.name, let founded = company.founded {
+      let dateFormatter = DateFormatter()
+      dateFormatter.dateFormat = "MMM dd, yyyy"
+      let foundedDateString = dateFormatter.string(from: founded)
+      let dateString = "\(name) - Founded: \(foundedDateString)"
+      cell.textLabel?.text = dateString
+    }else{
+      cell.textLabel?.text = company.name
+    }
+    //cell.textLabel?.text = "\(company.name) - Founded: \(company.founded)"
     return cell
   }
   
@@ -112,6 +110,34 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
   }
   
   //  Custom functions
+
+  
+  private func editHandlerFunction(action: UITableViewRowAction, indexPath: IndexPath){
+    let editCompanyController = CreateCompanyController()
+    editCompanyController.delegate = self
+    //We pass the indexpath that we are swiping as the indexpath for the company title
+    editCompanyController.company = companies[indexPath.row]
+    let navController = CustomNavigationController(rootViewController: editCompanyController)
+    present(navController, animated: true, completion: nil)
+  }
+  private func fetchCompanies(){
+    
+    let context = CoreDataManager.shared.persistentContainer.viewContext
+    
+    let fetchRequest = NSFetchRequest<Company>(entityName: "Company")
+    
+    do{
+      let companies = try context.fetch(fetchRequest)
+      
+      companies.forEach ({ (company) in
+        //        print(company.name ?? "")
+        self.companies = companies
+        tableView.reloadData()
+      })
+    }catch let fetchErr{
+      print("Failed to fetch err:", fetchErr)
+    }
+  }
   @objc func handleAddCompany() {
     let createCompanyController = CreateCompanyController()
     let navController = CustomNavigationController(rootViewController: createCompanyController)
@@ -137,9 +163,6 @@ class CompaniesController: UITableViewController, CreateCompanyControllerDelegat
   }
   
 }
-
-
-
 
 
 
