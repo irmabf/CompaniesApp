@@ -69,8 +69,9 @@ class CreateCompanyController: UIViewController, UIImagePickerControllerDelegate
     setupUI()
 
     setupCancelButton()
+    
+    setupSaveButtonInNavbar(selector: #selector(handleSave))
 
-    navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Save", style: .plain, target: self, action: #selector(handleSave))
     nameTextField.becomeFirstResponder()
     
   }
@@ -81,12 +82,8 @@ class CreateCompanyController: UIViewController, UIImagePickerControllerDelegate
   }
   
   private func setupUI() {
-    let lightBlueBackgroundView = UIView()
-    lightBlueBackgroundView.backgroundColor = .lightBlue
     
-    view.addSubview(lightBlueBackgroundView)
-   
-    lightBlueBackgroundView.anchor(top: view.topAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 350)
+    let lightBlueBackgroundView = setupLightBlueBackgroundView(height: 350)
     
     view.addSubview(companyImageView)
     companyImageView.anchor(top: view.topAnchor, left: nil, bottom: nil, right: nil, paddingTop: 8, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 100, height: 100)

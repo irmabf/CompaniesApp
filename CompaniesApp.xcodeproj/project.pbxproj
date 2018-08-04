@@ -12,7 +12,7 @@
 		B736E9512115094000F3D7CC /* CompaniesController+CreateCompany.swift in Sources */ = {isa = PBXBuildFile; fileRef = B736E9502115094000F3D7CC /* CompaniesController+CreateCompany.swift */; };
 		B736E95321150A6B00F3D7CC /* CompaniesController+UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B736E95221150A6A00F3D7CC /* CompaniesController+UITableView.swift */; };
 		B736E9552115134800F3D7CC /* EmployeeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B736E9542115134800F3D7CC /* EmployeeController.swift */; };
-		B736E957211516B500F3D7CC /* UIViewController+navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B736E956211516B500F3D7CC /* UIViewController+navigation.swift */; };
+		B736E957211516B500F3D7CC /* UIViewController+helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B736E956211516B500F3D7CC /* UIViewController+helpers.swift */; };
 		B736E9592115192600F3D7CC /* CreateEmployeeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B736E9582115192600F3D7CC /* CreateEmployeeController.swift */; };
 		B75FCE0020F25131008BE761 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75FCDFF20F25131008BE761 /* AppDelegate.swift */; };
 		B75FCE0220F25131008BE761 /* CompaniesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75FCE0120F25131008BE761 /* CompaniesController.swift */; };
@@ -35,7 +35,7 @@
 		B736E9502115094000F3D7CC /* CompaniesController+CreateCompany.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CompaniesController+CreateCompany.swift"; sourceTree = "<group>"; };
 		B736E95221150A6A00F3D7CC /* CompaniesController+UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CompaniesController+UITableView.swift"; sourceTree = "<group>"; };
 		B736E9542115134800F3D7CC /* EmployeeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmployeeController.swift; sourceTree = "<group>"; };
-		B736E956211516B500F3D7CC /* UIViewController+navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+navigation.swift"; sourceTree = "<group>"; };
+		B736E956211516B500F3D7CC /* UIViewController+helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+helpers.swift"; sourceTree = "<group>"; };
 		B736E9582115192600F3D7CC /* CreateEmployeeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateEmployeeController.swift; sourceTree = "<group>"; };
 		B75FCDFC20F25131008BE761 /* CompaniesApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CompaniesApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B75FCDFF20F25131008BE761 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -116,7 +116,7 @@
 				B736E94A2114BF9E00F3D7CC /* UINavigationController+style.swift */,
 				B736E9502115094000F3D7CC /* CompaniesController+CreateCompany.swift */,
 				B736E95221150A6A00F3D7CC /* CompaniesController+UITableView.swift */,
-				B736E956211516B500F3D7CC /* UIViewController+navigation.swift */,
+				B736E956211516B500F3D7CC /* UIViewController+helpers.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -220,7 +220,7 @@
 				B75FCE1520F25319008BE761 /* UIView+constraints.swift in Sources */,
 				B736E9512115094000F3D7CC /* CompaniesController+CreateCompany.swift in Sources */,
 				B736E94B2114BF9E00F3D7CC /* UINavigationController+style.swift in Sources */,
-				B736E957211516B500F3D7CC /* UIViewController+navigation.swift in Sources */,
+				B736E957211516B500F3D7CC /* UIViewController+helpers.swift in Sources */,
 				B75FCE2320F26602008BE761 /* UIColor+rgb.swift in Sources */,
 				B736E95321150A6B00F3D7CC /* CompaniesController+UITableView.swift in Sources */,
 				B75FCE3020F2A8CA008BE761 /* CompaniesAppModels.xcdatamodeld in Sources */,
