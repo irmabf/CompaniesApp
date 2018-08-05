@@ -7,9 +7,17 @@
 //
 
 import UIKit
-import CoreData
+
+protocol CreateEmployeeControllerDelegate {
+  // Classes conforming to this protocol would need to implemente these functions
+  func didAddEmployee(employee: Employee)
+}
 
 class CreateEmployeeController: UIViewController {
+  
+  // the class CreateEmployeeController must conform to the protocol of the class as a delegate
+  var delegate: CreateEmployeeControllerDelegate?
+  
   let namelabel: UILabel = {
     let label = UILabel()
     label.text = "Name"
@@ -49,12 +57,18 @@ class CreateEmployeeController: UIViewController {
   @objc private func handleSave(){
     guard let employeeName = nameTextField.text else { return }
     
-    let error = CoreDataManager.shared.createEmployee(employeeName: employeeName)
-    if let error = error {
+    let tuple = CoreDataManager.shared.createEmployee(employeeName: employeeName)
+    
+    if let error = tuple.1 {
       //in production this is where we would present an error modal of some kind, perhaps
       //an UIAlertController to show our error message
       print(error)
     }else{
+      // on creation successs
+      dismiss(animated: true) {
+        //we´ll call the delegate
+        self.delegate?.didAddEmployee(employee: tuple.0!)
+      }
       dismiss(animated: true, completion: nil)
     }
   }

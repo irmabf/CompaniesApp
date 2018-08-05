@@ -11,7 +11,7 @@ import CoreData
 
 //Custom Delegation
 protocol CreateCompanyControllerDelegate {
-//  Classes conforming to this protocol would need to implement this function
+//  Classes conforming to this protocol would need to implement these functions
   func didAddCompany(company: Company)
   func didEditCompany(company: Company)
 }

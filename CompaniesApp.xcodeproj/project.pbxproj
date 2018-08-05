@@ -27,6 +27,7 @@
 		B75FCE2820F276B0008BE761 /* CreateCompanyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75FCE2720F276B0008BE761 /* CreateCompanyController.swift */; };
 		B75FCE3020F2A8CA008BE761 /* CompaniesAppModels.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = B75FCE2E20F2A8CA008BE761 /* CompaniesAppModels.xcdatamodeld */; };
 		B75FCE3220F2B420008BE761 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B75FCE3120F2B420008BE761 /* CoreDataManager.swift */; };
+		B77C3CE021167D6600E0120F /* EmployeesController+CreateEmployee.swift in Sources */ = {isa = PBXBuildFile; fileRef = B77C3CDF21167D6600E0120F /* EmployeesController+CreateEmployee.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +53,7 @@
 		B75FCE2720F276B0008BE761 /* CreateCompanyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCompanyController.swift; sourceTree = "<group>"; };
 		B75FCE2F20F2A8CA008BE761 /* CompaniesAppModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CompaniesAppModel.xcdatamodel; sourceTree = "<group>"; };
 		B75FCE3120F2B420008BE761 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		B77C3CDF21167D6600E0120F /* EmployeesController+CreateEmployee.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "EmployeesController+CreateEmployee.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +96,7 @@
 			children = (
 				B7B0FAAE20F3A4DF00EFFEA3 /* Models */,
 				B75FCE1A20F25B77008BE761 /* Controllers */,
+				B75FCE1620F25A68008BE761 /* CustomNavigationController.swift */,
 				B736E94F2114E28700F3D7CC /* Views */,
 				B75FCE1320F25304008BE761 /* Utils */,
 				B75FCDFF20F25131008BE761 /* AppDelegate.swift */,
@@ -114,9 +117,9 @@
 				B75FCE1E20F263D8008BE761 /* UIColor+theme.swift */,
 				B75FCE2220F26602008BE761 /* UIColor+rgb.swift */,
 				B736E94A2114BF9E00F3D7CC /* UINavigationController+style.swift */,
-				B736E9502115094000F3D7CC /* CompaniesController+CreateCompany.swift */,
-				B736E95221150A6A00F3D7CC /* CompaniesController+UITableView.swift */,
 				B736E956211516B500F3D7CC /* UIViewController+helpers.swift */,
+				B77C3CDE211679B400E0120F /* CompaniesUtils */,
+				B77C3CE121167D7400E0120F /* EmployeesUtils */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -124,13 +127,45 @@
 		B75FCE1A20F25B77008BE761 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				B77C3CDC2116798000E0120F /* Companies */,
+				B77C3CDD2116799300E0120F /* Employees */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B77C3CDC2116798000E0120F /* Companies */ = {
+			isa = PBXGroup;
+			children = (
 				B75FCE0120F25131008BE761 /* CompaniesController.swift */,
-				B75FCE1620F25A68008BE761 /* CustomNavigationController.swift */,
 				B75FCE2720F276B0008BE761 /* CreateCompanyController.swift */,
+			);
+			path = Companies;
+			sourceTree = "<group>";
+		};
+		B77C3CDD2116799300E0120F /* Employees */ = {
+			isa = PBXGroup;
+			children = (
 				B736E9542115134800F3D7CC /* EmployeeController.swift */,
 				B736E9582115192600F3D7CC /* CreateEmployeeController.swift */,
 			);
-			path = Controllers;
+			path = Employees;
+			sourceTree = "<group>";
+		};
+		B77C3CDE211679B400E0120F /* CompaniesUtils */ = {
+			isa = PBXGroup;
+			children = (
+				B736E9502115094000F3D7CC /* CompaniesController+CreateCompany.swift */,
+				B736E95221150A6A00F3D7CC /* CompaniesController+UITableView.swift */,
+			);
+			path = CompaniesUtils;
+			sourceTree = "<group>";
+		};
+		B77C3CE121167D7400E0120F /* EmployeesUtils */ = {
+			isa = PBXGroup;
+			children = (
+				B77C3CDF21167D6600E0120F /* EmployeesController+CreateEmployee.swift */,
+			);
+			path = EmployeesUtils;
 			sourceTree = "<group>";
 		};
 		B7B0FAAE20F3A4DF00EFFEA3 /* Models */ = {
@@ -217,6 +252,7 @@
 				B736E9592115192600F3D7CC /* CreateEmployeeController.swift in Sources */,
 				B736E9552115134800F3D7CC /* EmployeeController.swift in Sources */,
 				B75FCE0220F25131008BE761 /* CompaniesController.swift in Sources */,
+				B77C3CE021167D6600E0120F /* EmployeesController+CreateEmployee.swift in Sources */,
 				B75FCE1520F25319008BE761 /* UIView+constraints.swift in Sources */,
 				B736E9512115094000F3D7CC /* CompaniesController+CreateCompany.swift in Sources */,
 				B736E94B2114BF9E00F3D7CC /* UINavigationController+style.swift in Sources */,
