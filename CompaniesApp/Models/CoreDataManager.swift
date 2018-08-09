@@ -39,7 +39,7 @@ struct CoreDataManager {
     }
   }
   //create an employee
-  func createEmployee(employeeName: String, birthday: Date, company: Company) -> (Employee?, Error?) {
+  func createEmployee(employeeName: String, employeeType: String, birthday: Date, company: Company) -> (Employee?, Error?) {
     let context = persistentContainer.viewContext
     
     //create an employee
@@ -47,6 +47,7 @@ struct CoreDataManager {
     //Setup the employee´s company to the company that
     //we are passing in
     employee.company = company
+    employee.type = employeeType
     
     // lets check company is setup correctly
     //        let company = Company(context: context)
@@ -61,8 +62,6 @@ struct CoreDataManager {
     
     //setup the birthday in employeeInformation to the incoming parameter from abobe
     employeeInformation.birthday = birthday
-    
-    
     
     employee.employeeInformation = employeeInformation
     

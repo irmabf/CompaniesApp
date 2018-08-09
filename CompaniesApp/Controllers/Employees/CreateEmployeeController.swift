@@ -71,10 +71,17 @@ class CreateEmployeeController: UIViewController {
     return
   }
 
+  let employeeTypeSegmentedControl: UISegmentedControl = {
+    let types = ["Executive", "Senior Management", "Staff"]
+    let sc = UISegmentedControl(items: types)
+    sc.selectedSegmentIndex = 0
+    sc.tintColor = .darkBlue
+    return sc
+  }()
   
   private func setupUI() {
     
-    _ = setupLightBlueBackgroundView(height: 100)
+    _ = setupLightBlueBackgroundView(height: 150)
     
     view.addSubview(nameLabel)
     
@@ -88,6 +95,9 @@ class CreateEmployeeController: UIViewController {
     
     view.addSubview(birthdayTextField)
     birthdayTextField.anchor(top: birthdayLabel.topAnchor, left: birthdayLabel.rightAnchor, bottom: birthdayLabel.bottomAnchor, right: view.rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
+    
+    view.addSubview(employeeTypeSegmentedControl)
+    employeeTypeSegmentedControl.anchor(top: birthdayLabel.bottomAnchor, left: view.leftAnchor, bottom: nil, right: view.rightAnchor, paddingTop: 0, paddingLeft: 16, paddingBottom: 0, paddingRight: 16, width: 0, height: 34)
 
   }
   
@@ -114,10 +124,12 @@ class CreateEmployeeController: UIViewController {
       showError(title: "Bad date", message: "Birthday date entered not valid")
       return
     }
-//    print(birthdayText)
-//    print(birthdayDate)
     
-    let tuple = CoreDataManager.shared.createEmployee(employeeName: employeeName, birthday: birthdayDate, company: company)
+    guard let employeeType = employeeTypeSegmentedControl.titleForSegment(at: employeeTypeSegmentedControl.selectedSegmentIndex) else { return }
+    
+    print(employeeType)
+
+    let tuple = CoreDataManager.shared.createEmployee(employeeName: employeeName, employeeType: employeeType, birthday: birthdayDate, company: company)
     
     if let error = tuple.1 {
       //in production this is where we would present an error modal of some kind, perhaps

@@ -8,6 +8,7 @@
     </entity>
     <entity name="Employee" representedClassName="Employee" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="company" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Company" inverseName="employees" inverseEntity="Company" syncable="YES"/>
         <relationship name="employeeInformation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EmployeeInformation" inverseName="employee" inverseEntity="EmployeeInformation" syncable="YES"/>
     </entity>
@@ -17,7 +18,7 @@
     </entity>
     <elements>
         <element name="Company" positionX="-207" positionY="-450" width="128" height="103"/>
-        <element name="Employee" positionX="117" positionY="-241" width="128" height="88"/>
+        <element name="Employee" positionX="117" positionY="-241" width="128" height="103"/>
         <element name="EmployeeInformation" positionX="-252" positionY="-144" width="128" height="73"/>
     </elements>
 </model>

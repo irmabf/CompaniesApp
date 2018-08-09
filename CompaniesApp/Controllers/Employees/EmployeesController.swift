@@ -11,69 +11,25 @@ import CoreData
 
 class EmployeesController: UITableViewController {
  
+  //MARK:- Attributes
+  
   var company: Company?
-  
-  var employees = [Employee]()
-  
   let cellId = "cellId"
+  
+  //An array of arrays of employees
+  var allEmployees = [[Employee]]()
+  
+  var employeeTypes = [
+    EmployeeType.Executive.rawValue,
+    EmployeeType.SeniorManagement.rawValue,
+    EmployeeType.Staff.rawValue
+  ]
+  
+  //MARK:- Lifecycle
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     navigationItem.title = company?.name
-    
-  }
-  
-  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return employees.count
-  }
-  
-  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
-        //Pull the employee from the employees array with the indexpath.row as the index of the array
-    let employee = employees[indexPath.row]
-    cell.textLabel?.text = employee.name
-    
-    if let birthday = employee.employeeInformation?.birthday {
-      let dateFormatter = DateFormatter()
-      dateFormatter.dateFormat = "MMM dd, yyyy"
-      
-      cell.textLabel?.text = "\(employee.name ?? "")    \(dateFormatter.string(from: birthday))"
-    }
-    
-    //        if let taxId = employee.employeeInformation?.taxId {
-    //            cell.textLabel?.text = "\(employee.name ?? "")    \(taxId)"
-    //        }
-    
-    cell.backgroundColor = UIColor.tealColor
-    cell.textLabel?.textColor = .white
-    cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 15)
-    
-    return cell
-  }
-  
-  private func fetchEmployees() {
-//    company?.employees
-    
-    guard let companyEmployees = company?.employees?.allObjects as? [Employee] else { return }
-    
-//    self.employees = company?.employees?.allObjects as! [Employee]
-    
-    self.employees = companyEmployees
-    
-//    let context = CoreDataManager.shared.persistentContainer.viewContext
-//
-//    let request = NSFetchRequest<Employee>(entityName: "Employee")
-//
-//    do {
-//      let employees = try context.fetch(request)
-//      //‼️ Important or we will get initial value of 0 employees in the array
-//      self.employees = employees
-//
-//      //employees.forEach{print("Employee name:", $0.name ?? "")}
-//    } catch let err {
-//      print("Failed to fetch employees:", err)
-//    }
-    
   }
   
   override func viewDidLoad() {
@@ -88,6 +44,76 @@ class EmployeesController: UITableViewController {
     setupPlusButtonInNavBar(selector: #selector(handleAdd))
     
   }
+  
+  //MARK:- TableView Methods
+  
+  override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    let label = IndentedLabel()
+
+    label.text = employeeTypes[section]
+    
+    label.backgroundColor = UIColor.lightBlue
+    label.textColor = UIColor.darkBlue
+    label.font = UIFont.boldSystemFont(ofSize: 16)
+    return label
+  }
+  
+  override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    return 50
+  }
+  
+  override func numberOfSections(in tableView: UITableView) -> Int {
+    return allEmployees.count
+  }
+  
+  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return allEmployees[section].count
+  }
+  
+  
+  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    
+    let cell = tableView.dequeueReusableCell(withIdentifier: cellId, for: indexPath)
+    //Pull the employee from the employees array with the indexpath.row as the index of the array
+//    let employee = indexPath.section == 0 ? shortNameEmployees[indexPath.row] : longNameEmployees[indexPath.row]
+    
+    let employee = allEmployees[indexPath.section][indexPath.row]
+
+    cell.textLabel?.text = employee.name
+    
+    if let birthday = employee.employeeInformation?.birthday {
+      let dateFormatter = DateFormatter()
+      dateFormatter.dateFormat = "MMM dd, yyyy"
+      
+      cell.textLabel?.text = "\(employee.name ?? "")    \(dateFormatter.string(from: birthday))"
+    }
+
+    cell.backgroundColor = UIColor.tealColor
+    cell.textLabel?.textColor = .white
+    cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 15)
+    
+    return cell
+  }
+ 
+ 
+//MARK:- Custom functions
+
+  func fetchEmployees() {
+    guard let companyEmployees = company?.employees?.allObjects as? [Employee] else { return }
+    
+    allEmployees = []
+    
+    //Let´s use an array and loop to filter
+    employeeTypes.forEach { (employeeType) in
+      //construct muy allEmployeesArray
+      allEmployees.append(
+        companyEmployees.filter{ $0.type == employeeType }
+      )
+    }
+  }
+  
+//MARK:- Selector functions
+  
   @objc private func handleAdd() {
     //Create the view controller
     let createEmployeeController = CreateEmployeeController()
@@ -99,5 +125,4 @@ class EmployeesController: UITableViewController {
     let navController = UINavigationController(rootViewController: createEmployeeController)
     present(navController, animated: true, completion: nil)
   }
-
 }
